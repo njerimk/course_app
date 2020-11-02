@@ -1,0 +1,16 @@
+<h1>Courses</h1>
+<!-- from_tag course_path -->
+<!--Form tag is used in a search form field or contact form  and requires the course_path-->
+<!-- For for you need to specify the instance variable in the new method -->
+<%= form_for @course do |f|%>
+<div> Course Name : <%=f.text_field :name %></div>
+<div> Room : <%= f.select :room, options_for_select((350..375).to_a, @course.room) %></div>
+<div> Day : <%= f.select :day, options_for_select(["Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays"], @course.day) %></div>
+<div>Time : <%= f.text_field :time%></div>
+<div>Students to Enroll :</div>
+<div><%= f.collection_check_boxes :student_ids, Student.all, :id, :name%></div>
+<!--f.collection_check_boxes :parameters of course attributes, Student.all = array of students, id = value, name = output shown in checkbox -->
+
+<div><%= f.submit %></div>
+<% end %>
+

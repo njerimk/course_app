@@ -1,0 +1,11 @@
+
+<h1><%=@course.name %></h1>
+<div>Room : <%=@course.room %></div>
+<div>Day : <%=@course.day %></div>
+<div>Time : <%=@course.time %></div>
+<div>Course Roster</div>
+<ul>
+    <% @course.students.each do |student| %>
+        <li><%= student.name %></li>
+    <% end %>
+</ul>

@@ -1,0 +1,18 @@
+<h1>Edit Course</h1>
+
+<%= form_for @course do |f|%>
+<div> Course Name : <%=f.text_field :name %></div>
+<div> Room : <%= f.select :room, options_for_select((350..375).to_a, @course.room)  %></div>
+<div> Day : <%= f.select :day, options_for_select(["Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays"], @course.day) %></div>
+<div>Time : <%= f.text_field :time%></div>
+<%= f.submit %>
+<% end %>
+
+
+<%= form_tag course_path(@course), method: "patch" do %>
+<div>Course name :<%= text_field_tag course[name], @course.name %></div>
+<div>Room :<%= select_tag :room, options_for_select((350..375).to_a, @course.room) %></div>
+<div>Day :<%= select_tag :day, options_for_select(["Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays"], @course.day) %></div>
+<div>Time:<%= text_field_tag :time, @course.time %></div>
+<div><%= submit_tag %></div> 
+<% end %>
